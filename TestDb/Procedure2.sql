@@ -1,6 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[Procedure2]
-	@param1 int = 0,
-	@param2 int
 AS
-	SELECT @param1, @param2
+	SELECT * from Table2
 RETURN 0
