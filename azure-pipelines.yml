@@ -4,7 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - DemoCdCi/*
+
+# no PR triggers
+pr: none
 
 pool:
   vmImage: 'windows-latest'
@@ -13,19 +21,35 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+- script: |
+    echo $(ConnectionStrings--DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
+- script: |
+    echo $(ConnectionStrings:DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
+- script: |
+    echo $(ConnectionStrings.DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
 - task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.5.1'
+  inputs:
+    versionSpec: 5.5.1
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
-    restoreSolution: $(solution)
+    restoreSolution: 'DemoCdCi/DemoCdCi.sln'
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: 'DemoCdCi/DemoCdCi.sln'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     restoreNugetPackages: true
 
 - script: |
@@ -39,3 +63,4 @@ steps:
     PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: 'SO-01'
   condition: succeededOrFailed()
+  
