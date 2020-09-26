@@ -1,0 +1,6 @@
+C:\Users\Admin\Downloads\ImportExcel\TestDb\bin\Debug\TestDb.dacpac
+C:\Users\Admin\Downloads\ImportExcel\TestDb\bin\Debug\TestDb.dll
+C:\Users\Admin\Downloads\ImportExcel\TestDb\bin\Debug\TestDb.pdb
+C:\Users\Admin\Downloads\ImportExcel\TestDb\obj\Debug\TestDb.dll
+C:\Users\Admin\Downloads\ImportExcel\TestDb\obj\Debug\TestDb.pdb
+C:\Users\Admin\Downloads\ImportExcel\TestDb\obj\Debug\TestDb.sqlprojAssemblyReference.cache

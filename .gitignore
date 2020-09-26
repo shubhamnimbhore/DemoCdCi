@@ -1,0 +1,7 @@
+
+*.config
+.vs/DemoCdCi/v15/.suo
+.vs/DemoCdCi/v15/Server/sqlite3/db.lock
+.vs/DemoCdCi/v15/Server/sqlite3/storage.ide
+.vs/DemoCdCi/v15/Server/sqlite3/storage.ide-shm
+.vs/DemoCdCi/v15/Server/sqlite3/storage.ide-wal
