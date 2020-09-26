@@ -32,18 +32,3 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: IISWebAppManagementOnMachineGroup@0
-  inputs:
-    EnableIIS: true
-    IISDeploymentType: 'IISWebsite'
-    ActionIISWebsite: 'CreateOrUpdateWebsite'
-    WebsiteName: 'Default Web Site'
-    WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
-    WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
-    CreateOrUpdateAppPoolForWebsite: true
-    AppPoolNameForWebsite: 'DefaultAppPool'
-    DotNetVersionForWebsite: 'v4.0'
-    PipeLineModeForWebsite: 'Integrated'
-    AppPoolIdentityForWebsite: 'ApplicationPoolIdentity'
-    Package: '$(System.DefaultWorkingDirectory)\*.zip'
