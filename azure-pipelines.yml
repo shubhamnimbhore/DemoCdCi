@@ -33,9 +33,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 - task: PublishBuildArtifacts@1
-- task: CopyPublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   inputs:
-    CopyRoot: 'D:\a\1\s\TestDb\bin\Release\TestDb.dacpac'
-    Contents: '*.dacpac'
-    ArtifactName: 'sqlartifact'
-    ArtifactType: 'Container'
+    targetPath: 'D:\a\1\s\TestDb\bin\Release\TestDb.dacpac'
+    artifact: 'sqlartifact'
+    publishLocation: 'pipeline'
